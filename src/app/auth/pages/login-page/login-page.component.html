@@ -1,0 +1,69 @@
+<form class="flex flex-column" [formGroup]="loginForm">
+  <span class="text-4xl font-medium mb-4">Login</span>
+
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input
+      matInput
+      type="email"
+      placeholder="Your email"
+      formControlName="email"
+    />
+    <mat-error
+      *ngIf="
+        loginForm.controls['email'].hasError('pattern') &&
+        !loginForm.controls['email'].hasError('required')
+      "
+      >Please enter a valid email address</mat-error
+    >
+    <mat-error *ngIf="loginForm.controls['email'].hasError('required')"
+      >Email is <strong>required</strong></mat-error
+    >
+  </mat-form-field>
+
+  <mat-form-field class="mt-2">
+    <mat-label>Password</mat-label>
+    <input
+      matInput
+      [type]="hide ? 'password' : 'text'"
+      placeholder="Your password"
+      formControlName="password"
+    />
+    <button
+      mat-icon-button
+      matSuffix
+      (click)="hide = !hide"
+      [attr.aria-label]="'Hide password'"
+      [attr.aria-pressed]="hide"
+    >
+      <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+    </button>
+    <mat-error *ngIf="loginForm.controls['password'].hasError('required')"
+      >Password is <strong>required</strong></mat-error
+    >
+  </mat-form-field>
+
+  <button
+    mat-button
+    mat-flat-button
+    class="mt-2"
+    color="primary"
+    (click)="onLogin()"
+    [disabled]="isLoading"
+  >
+    <mat-icon *ngIf="!isLoading">login</mat-icon>
+
+    <div class="flex align-items-center gap-2">
+      <mat-spinner
+        *ngIf="isLoading"
+        [diameter]="20"
+        color="primary"
+      ></mat-spinner>
+      <span>Enter</span>
+    </div>
+  </button>
+
+  <div class="mt-4 text-center">
+    <a routerLink="/auth/new-account">Don't have an account?</a>
+  </div>
+</form>

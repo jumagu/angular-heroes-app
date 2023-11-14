@@ -1,0 +1,47 @@
+.spinner-container {
+  height: calc(100vh - 104px);
+}
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-card-container {
+  height: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-img {
+  margin: 10px;
+
+  :is(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+}
+
+@media (min-width: 860px) {
+  .hero-card-container {
+    height: calc(100vh - 104px);
+  }
+
+  .hero-card-container {
+    max-width: 1000px;
+    flex-direction: row;
+  }
+
+  .hero-img {
+    width: 50%;
+  }
+
+  .card-content {
+    width: 50%;
+  }
+}

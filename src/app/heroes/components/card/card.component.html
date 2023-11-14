@@ -1,0 +1,36 @@
+<mat-card class="h-full">
+  <img
+    mat-card-image
+    class="card-img"
+    [src]="hero | heroImage"
+    [alt]="hero.superhero"
+  />
+
+  <mat-card-header>
+    <mat-card-title>{{ hero.superhero }}</mat-card-title>
+    <mat-card-subtitle>{{ hero.alter_ego }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-actions class="p-3">
+    <button
+      mat-button
+      mat-raised-button
+      color="primary"
+      [routerLink]="['/heroes/edit', hero.id]"
+    >
+      <mat-icon>edit</mat-icon>
+      Edit
+    </button>
+
+    <div class="spacer"></div>
+
+    <button
+      mat-mini-fab
+      color="accent"
+      matTooltip="Details"
+      [routerLink]="['/heroes', hero.id]"
+    >
+      <mat-icon>more_horiz</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

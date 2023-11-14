@@ -1,0 +1,10 @@
+.auth-forms-container {
+  width: 100%;
+  padding: 40px 20px;
+}
+
+@media (min-width: 468px) {
+  .auth-forms-container {
+    max-width: 500px;
+  }
+}

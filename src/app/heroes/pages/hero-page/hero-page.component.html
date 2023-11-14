@@ -1,0 +1,51 @@
+<ng-template #loading>
+  <div class="spinner-container">
+    <mat-spinner diameter="60" strokeWidth="5"></mat-spinner>
+  </div>
+</ng-template>
+
+<div class="animate__animated animate__fadeIn" *ngIf="hero; else loading">
+  <mat-card class="hero-card-container">
+    <div class="hero-img">
+      <img [src]="hero | heroImage" [alt]="hero.superhero" />
+    </div>
+
+    <div class="card-content">
+      <mat-card-header
+        class="flex justify-content-between align-items-baseline w-auto"
+      >
+        <mat-card-title style="font-size: 25px">{{
+          hero.superhero
+        }}</mat-card-title>
+        <mat-card-subtitle>{{ hero.alter_ego }}</mat-card-subtitle>
+
+        <mat-card-actions class="p-0">
+          <button mat-raised-button color="primary" (click)="goBack()">
+            Back
+          </button>
+        </mat-card-actions>
+      </mat-card-header>
+
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item><b>Alter ego: </b>{{ hero.alter_ego }}</mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item><b>Publisher: </b>{{ hero.publisher }}</mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item
+            ><b>First appearance: </b>{{ hero.first_appearance }}</mat-list-item
+          >
+        </mat-list>
+
+        <div>
+          <h2 class="mb-2">Characters</h2>
+          <mat-chip-listbox>
+            <mat-chip *ngFor="let character of hero.characters.split(',')">
+              {{ character }}
+            </mat-chip>
+          </mat-chip-listbox>
+        </div>
+      </mat-card-content>
+    </div>
+  </mat-card>
+</div>
